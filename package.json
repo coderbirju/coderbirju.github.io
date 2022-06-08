@@ -1,11 +1,11 @@
 {
-  "name": "v4",
+  "name": "v1",
   "description": "Personal Website",
   "version": "1.0.0",
-  "author": "Brittany Chiang <brittany.chiang@gmail.com>",
+  "author": "Arjun Raja <arjunraja.msgrad@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bchiang7/v4"
+    "url": "https://github.com/coderbirju/coderbirju.github.io"
   },
   "keywords": [
     "gatsby"
@@ -20,6 +20,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "prepare": "husky install",
+    "deploy": "gatsby build && gh-pages -d public -b main",
     "lint-staged": "lint-staged"
   },
   "lint-staged": {

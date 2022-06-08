@@ -5,9 +5,8 @@ module.exports = {
     title: 'Arjun Raja',
     description:
       'Arjun is a software engineer who specializes in building and occasionally exceptional full-stack cross-platform apps.',
-    siteUrl: 'https://brittanychiang.com', // No trailing slash allowed!
-    image: '/og.png', // Path to your image you placed in the 'static' folder
-    twitterUsername: '@bchiang7',
+    siteUrl: 'https://coderbirju.github.io', // No trailing slash allowed!
+    image: '/aog.png', // Path to your image you placed in the 'static' folder
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -20,8 +19,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'BrittanyChiang',
-        short_name: 'BrittanyChiang',
+        name: 'ArjunRaja',
+        short_name: 'ArjunRaja',
         start_url: '/',
         background_color: config.colors.darkNavy,
         theme_color: config.colors.navy,
