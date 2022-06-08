@@ -5,6 +5,7 @@ company: 'Webknot Technologies'
 location: 'Bangalore, India'
 range: 'January - May 2021'
 url: 'https://gowebknot.com/'
+companyShort: 'Webknot'
 ---
 
 - Lead a team of 2 software developers to build the complete backend architecture for a ReactNative cross platform moblie application 'Palette'.

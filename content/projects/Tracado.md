@@ -6,7 +6,7 @@ external: ''
 tech:
   - ReactNative
   - Aws Amplify
-  - Mobile App development
+  - Mobile Application
 showInProjects: true
 ---
 

@@ -5,6 +5,7 @@ company: 'Unfold Consulting'
 location: 'Bangalore, India'
 range: 'July - September 2018'
 url: 'https://unfold-consulting.com/'
+companyShort: 'Unfold'
 ---
 
 - Developed and maintained code for in-house and client websites primarily using HTML, CSS, Php, and jQuery

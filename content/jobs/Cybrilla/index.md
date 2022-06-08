@@ -5,6 +5,7 @@ company: 'Cybrilla'
 location: 'Bangalore, India'
 range: 'July 2019 - December 2021'
 url: 'https://cybrilla.com/'
+companyShort: 'Cybrilla'
 ---
 
 - Owned the complete software lifecycle of partner onboarding and brokerage share components of <a target="_blank" rel="noopener noreferrer" href="https://upstox.com/become-sub-broker/">Upstox </a> Web application

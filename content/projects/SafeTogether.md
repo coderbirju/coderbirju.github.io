@@ -9,4 +9,4 @@ tech:
 showInProjects: true
 ---
 
-A one stop 'Pandemic Management System', a solution to be prepared for any global pandemics of the future.
+A one stop 'Pandemic Management System', a system that allows organizations be prepared for any global pandemics of the future.

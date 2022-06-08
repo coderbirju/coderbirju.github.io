@@ -9,4 +9,4 @@ company: ''
 showInProjects: true
 ---
 
-One stop repository for all Data structure and algorithms. Also includes some of the attempted Leetcode contest answers. Work in Progress.
+One stop repository for Data structure and algorithm problem approches. Also includes some Leetcode contest answers. Work in Progress.
