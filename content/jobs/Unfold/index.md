@@ -8,6 +8,6 @@ url: 'https://unfold-consulting.com/'
 companyShort: 'Unfold'
 ---
 
-- Developed and maintained code for in-house and client websites primarily using HTML, CSS, Php, and jQuery
-- Manually tested sites in various browsers and mobile devices to ensure cross-browser compatibility and responsiveness
-- Fixed critical bugs and deployed various feature for TripBuzz a Employee management system
+- Proficiently developed and upheld code for both in-house and client websites, with a primary focus on utilizing HTML, CSS, PHP, and jQuery for effective web development.
+- Conducted meticulous manual testing of websites across a spectrum of browsers and mobile devices, guaranteeing seamless cross-browser compatibility and responsive design.
+- Addressed critical bugs and implemented a range of features for TripBuzz, an Employee Management System, contributing to its functionality and performance improvements.

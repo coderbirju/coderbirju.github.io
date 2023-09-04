@@ -9,6 +9,6 @@ companyShort: 'Cybrilla'
 ---
 
 - Owned the complete software lifecycle of partner onboarding and brokerage share components of <a target="_blank" rel="noopener noreferrer" href="https://upstox.com/become-sub-broker/">Upstox </a> Web application
-- Wrote clean, scalable and optimized code that would be used by thousands of new age indians getting into the stock market for the first time. Followed the design principles of simplicty, scalabilty and increased cohesion
-- Worked with a variety of different languages, platforms, frameworks, and databases such as TypeScript, NodeJs, Aws, AngularJs, MSSQL, MongoDb, gRpc and AlgoliaSearch
-- Communicate with multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis
+- I crafted clean, scalable, and optimized code tailored for thousands of new-age Indian individuals venturing into the stock market for the very first time. My approach adhered to essential design principles, emphasizing simplicity, scalability, and heightened cohesion.
+- Collaborated with a diverse array of languages, platforms, frameworks, and databases including TypeScript, Node.js, AWS, Angular.js, MSSQL, MongoDB, gRPC, and AlgoliaSearch.
+- Engaged in daily communication with multi-disciplinary teams comprising engineers, designers, producers, and clients, fostering a collaborative and cross-functional work environment.

@@ -8,7 +8,7 @@ url: 'https://gowebknot.com/'
 companyShort: 'Webknot'
 ---
 
-- Lead a team of 2 software developers to build the complete backend architecture for a ReactNative cross platform moblie application 'Palette'.
-- Primarily tasked at database design and maintaining high standard of coding and best practices
-- Performed code reviews and gave the team a direction in designing RESTful APIs
-- Tech stack included languages and frameworks such as ReactNative, MSSql, Salesforce, NodeJs
+- Assumed leadership of a team comprising two software developers, spearheading the development of the comprehensive backend architecture for 'Palette,' a cross-platform mobile application built with React Native.
+- I was primarily responsible for database design and upholding rigorous coding standards and best practices.
+- Conducted thorough code reviews and provided strategic guidance to the team in designing RESTful APIs, ensuring code quality and adherence to industry best practices.
+- The tech stack encompassed a range of languages and frameworks, notably React Native, MSSQL, Salesforce, and Node.js.
