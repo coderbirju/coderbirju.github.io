@@ -1,16 +1,17 @@
 ---
 date: '1'
-title: 'CampChamp - Find your campground'
+title: 'AutoScale API'
 cover: './CloudDiagram.png'
-external: 'https://powerful-mesa-36430.herokuapp.com'
-github: 'https://github.com/coderbirju/CampChamp'
+external: 'https://github.com/orgs/Org-Arjun-Raja-002964082/repositories'
+github: 'https://github.com/Org-Arjun-Raja-002964082/webapp'
 tech:
-  - Bootstrap
-  - Express
-  - HTML5
-  - CSS3
-  - MongoDB
-  - Heroku
+  - NestJS
+  - AWS Cloudformation
+  - AWS S3
+  - AWS Lambda
+  - Sendgrid
+  - AWS RDS
+  - AWS Cloudwatch
 ---
 
 CampChamp is a website for adventurers who like to go camping. It's a platform form campers to share pictures and experience from their previous trips.
