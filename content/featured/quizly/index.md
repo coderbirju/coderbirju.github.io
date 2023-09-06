@@ -1,16 +1,13 @@
 ---
-date: '1'
-title: 'CampChamp - Find your campground'
+date: '2'
+title: 'Quizly - Quick Quizes'
 cover: './Dash2.png'
-external: 'https://powerful-mesa-36430.herokuapp.com'
-github: 'https://github.com/coderbirju/CampChamp'
+github: 'https://github.com/coderbirju/Quizly'
 tech:
-  - Bootstrap
-  - Express
-  - HTML5
-  - CSS3
-  - MongoDB
-  - Heroku
+  - JavaFx
+  - Java
+  - MongoDb
+  - MVC
 ---
 
 CampChamp is a website for adventurers who like to go camping. It's a platform form campers to share pictures and experience from their previous trips.

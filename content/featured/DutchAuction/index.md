@@ -1,16 +1,15 @@
 ---
-date: '1'
-title: 'CampChamp - Find your campground'
+date: '4'
+title: 'Smart contract : Dutch Auction'
 cover: './solidity.png'
-external: 'https://powerful-mesa-36430.herokuapp.com'
-github: 'https://github.com/coderbirju/CampChamp'
+external: 'https://github.com/coderbirju/v6.0'
+github: 'https://github.com/coderbirju/DutchAuctionForge'
 tech:
-  - Bootstrap
-  - Express
-  - HTML5
-  - CSS3
-  - MongoDB
-  - Heroku
+  - Solidity
+  - Hardhat
+  - React
+  - MetaMask
+  - Ethereum
 ---
 
 CampChamp is a website for adventurers who like to go camping. It's a platform form campers to share pictures and experience from their previous trips.
