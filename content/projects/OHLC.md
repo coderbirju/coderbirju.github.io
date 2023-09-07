@@ -6,7 +6,7 @@ external: ''
 tech:
   - NodeJs
 company: ''
-showInProjects: false
+showInProjects: true
 ---
 
 A node application to demonstrate the usecase of nodeJs worker threads. Allows user to "Subscribe" to a stock in the OHLC stream which is mocked from a json file.
