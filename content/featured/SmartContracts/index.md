@@ -1,6 +1,6 @@
 ---
-date: '3'
-title: 'Smart Contracts (WIP)'
+date: '5'
+title: 'Smart Contract : Birju Coin'
 cover: './cryptoProj.png'
 github: 'https://github.com/coderbirju/smart_contracts'
 external: ''
