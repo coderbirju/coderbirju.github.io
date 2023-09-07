@@ -1,5 +1,5 @@
 ---
-date: '2'
+date: '1'
 title: 'Quizly - Quick Quizes'
 cover: './Dash2.png'
 github: 'https://github.com/coderbirju/Quizly'
@@ -10,6 +10,4 @@ tech:
   - MVC
 ---
 
-CampChamp is a website for adventurers who like to go camping. It's a platform form campers to share pictures and experience from their previous trips.
-
-The project was my segue into web development and becoming a full stack software engineer. The website is minimalitic in design and uses pure HTML5 and CSS3 for styling. The project is deployed on the Heroku platform and github CI/CD.
+Quizly is a user-friendly quiz and attendance app that was developed to simplify classroom management. Recognizing that professors often struggled with attendance and gauging student comprehension, we designed Quizly to address these challenges. With Quizly, instructors can effortlessly create quizzes, which students then complete. This not only marks attendance automatically but also provides valuable analytics and insights into class understanding. The technology stack behind Quizly includes JavaFX, Java, and MongoDB, all implemented following the MVC (Model-View-Controller) architecture. This combination ensures a seamless experience for both professors and students, making attendance tracking and concept comprehension assessment hassle-free in the modern classroom environment.
