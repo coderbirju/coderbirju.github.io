@@ -12,6 +12,12 @@ tech:
   - Ethereum
 ---
 
-CampChamp is a website for adventurers who like to go camping. It's a platform form campers to share pictures and experience from their previous trips.
+- **Description:** Dutch Auction is a smart contract built on the Ethereum blockchain, facilitating the conducting of Dutch auctions for the sale of physical and digital assets.
+- **Blockchain Technology:** The project leverages Ethereum, a leading blockchain platform known for its smart contract capabilities and decentralized nature.
+- **Smart Contract Language:** Utilizes Solidity, a programming language designed for writing Ethereum smart contracts, to define the auction rules and asset transfers.
+- **Development Environment:** Employs Hardhat, a development environment for Ethereum that streamlines smart contract development and testing.
+- **Frontend Framework:** Built with React, a popular JavaScript library for building user interfaces, ensuring a user-friendly and interactive auction platform.
+- **Wallet Integration:** Integrates MetaMask, a widely used Ethereum wallet browser extension, to enable users to participate in auctions securely.
+- **Ethereum Network:** Operates on the Ethereum network, providing global accessibility and security for asset auctions.
 
-The project was my segue into web development and becoming a full stack software engineer. The website is minimalitic in design and uses pure HTML5 and CSS3 for styling. The project is deployed on the Heroku platform and github CI/CD.
+This project combines blockchain technology, smart contracts, and a user-friendly frontend to create a platform where users can efficiently conduct Dutch auctions for their physical and digital assets on the Ethereum blockchain.
