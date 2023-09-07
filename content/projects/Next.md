@@ -4,7 +4,7 @@ title: 'Coming Soon'
 github: ''
 external: ''
 tech:
-  - Javascript
+  - N/A
 showInProjects: true
 ---
 

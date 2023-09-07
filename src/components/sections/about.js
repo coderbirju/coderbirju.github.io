@@ -127,14 +127,18 @@ const About = () => {
   }, []);
 
   const skills = [
-    'JavaScript (ES6+)',
-    'Java',
+    'Java (8+)',
+    'TypeScript',
+    'Go',
     'React',
+    'Node.js',
+    'Cloudformation',
+    'Docker',
+    'YAML',
+    'MongoDB',
+    'SQL',
     'Solidity',
     'React Native',
-    'Node.js',
-    'MongoDB',
-    'TypeScript',
   ];
 
   return (
@@ -145,33 +149,25 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hi! My name is Arjun and I enjoy building things. My interest in software engineering
-              started back in 2012 when I built my first turbo C application, building something
-              from scratch gave me immense joy and satisfaction — I’ve been chasing this feeling
-              ever since.
+              My journey into the world of software engineering began in 2012 when I created my
+              first Turbo C application. From that moment, I was captivated by the process of
+              building something from the ground up, and the joy and satisfaction it brought me.
+              Ever since then, I've been on a relentless pursuit to recreate that feeling.
             </p>
 
             <p>
-              Fast-forward to today, and I’ve had the privilege of working at multiple startups and
-              diverse teams at <a href="https://cybrilla.com/">Cybrilla - a fintech startup</a>,{' '}
-              <a href="https://gowebknot.com/">WebKnot - a SaaS start-up</a>, and{' '}
-              <a href="https://unfold-consulting.com/">
-                Unfold Consulting - a business management consultant
-              </a>
-              . Now, I'm pursuing my Master's of Science in Information Systems at{' '}
-              <a href="https://www.northeastern.edu/">Northeastern University</a>
+              Today, I've been fortunate to work with a variety of teams in different organizations,
+              ranging from startups to tech giants. My experiences include contributing to the
+              innovative cloud technologies at{' '}
+              <a href="https://aws.amazon.com/">Amazon Web Services </a>, diving into the fast-paced
+              world of fintech at <a href="https://cybrilla.com/">Cybrilla</a> , and exploring the
+              SaaS landscape at <a href="https://gowebknot.com/">WebKnot</a>. Currently, I'm in the
+              final semester of my Master's of Science in Information Systems program at{' '}
+              <a href="https://www.northeastern.edu/">Northeastern University - Boston</a>, where I
+              continue to hone my expertise in the field
             </p>
 
-            {/* <p>
-              I also recently{' '}
-              <a href="https://www.newline.co/courses/build-a-spotify-connected-app">
-                launched a course
-              </a>{' '}
-              that covers everything you need to build a web app with the Spotify API using Node
-              &amp; React.
-            </p> */}
-
-            <p>Here are a few technologies I’ve been working with recently:</p>
+            <p>Here are some of the technologies I've been actively working with recently:</p>
           </div>
 
           <ul className="skills-list">
@@ -183,7 +179,7 @@ const About = () => {
           <div className="wrapper">
             <StaticImage
               className="img"
-              src="../../images/me3.jpg"
+              src="../../images/profPic.jpg"
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}
