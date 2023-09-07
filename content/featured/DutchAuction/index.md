@@ -12,12 +12,4 @@ tech:
   - Ethereum
 ---
 
-- **Description:** Dutch Auction is a smart contract built on the Ethereum blockchain, facilitating the conducting of Dutch auctions for the sale of physical and digital assets.
-- **Blockchain Technology:** The project leverages Ethereum, a leading blockchain platform known for its smart contract capabilities and decentralized nature.
-- **Smart Contract Language:** Utilizes Solidity, a programming language designed for writing Ethereum smart contracts, to define the auction rules and asset transfers.
-- **Development Environment:** Employs Hardhat, a development environment for Ethereum that streamlines smart contract development and testing.
-- **Frontend Framework:** Built with React, a popular JavaScript library for building user interfaces, ensuring a user-friendly and interactive auction platform.
-- **Wallet Integration:** Integrates MetaMask, a widely used Ethereum wallet browser extension, to enable users to participate in auctions securely.
-- **Ethereum Network:** Operates on the Ethereum network, providing global accessibility and security for asset auctions.
-
-This project combines blockchain technology, smart contracts, and a user-friendly frontend to create a platform where users can efficiently conduct Dutch auctions for their physical and digital assets on the Ethereum blockchain.
+Dutch Auction is a blockchain-powered system running on the Ethereum network, designed to streamline Dutch auctions for the sale of physical and digital assets. Leveraging Ethereum's renowned smart contract capabilities and decentralization, the project utilizes Solidity as its contract language to establish auction rules and facilitate asset transfers securely. With the development environment powered by Hardhat, the platform ensures efficient smart contract development and testing. The user-friendly frontend, built on React, enhances interactivity, while MetaMask integration ensures secure participation. Operating on the Ethereum network offers global accessibility and robust security, making it an ideal choice for conducting Dutch auctions for a wide range of assets.
