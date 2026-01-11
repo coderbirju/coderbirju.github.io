@@ -1,15 +1,16 @@
 ---
-date: '2023-08-31'
-title: 'Software Development Engineer Intern'
+date: '2024-02-01'
+title: 'Software Development Engineer'
 company: 'Amazon Web Services'
-location: 'Seattle, Washinton'
-range: 'May 2023 - September 2023'
-url: 'https://aws.amazon.com/fargate/'
+location: 'Seattle, Washington'
+range: 'February 2024 - Present'
+url: 'https://aws.amazon.com/'
 companyShort: 'AWS'
 ---
 
-- My project involved improving and implementing the performance benchmarks of <a href="https://github.com/awslabs/soci-snapshotter">soci-snapshotter</a>. Soci-snapshotter is a <a href="https://containerd.io/">containerd</a> plugin that improves container pull times by using lazy loading.
-- We needed to ensure that soci continues to perform better and doesn't slow down due to any code changes to the repository. The following lists all my responsibilities.
-- The credential helper of the soci-snapshotter benchmark engine was enhanced to ensure compatibility with all container registries. This improvement enabled users to assess the performance of their container images across various registries, extending inclusivity and versatility.
-- The command-line interfaces (CLIs) were enriched with command flags, granting users the capability to tailor benchmark runs to their unique preferences and needs.
-- A novel git workflow was introduced to the project, allowing for the detection of performance regressions in each pull request. This workflow also simplified the display of historical performance metrics on the project's <a href="https://awslabs.github.io/soci-snapshotter/dev/benchmarks/">GitHub-Pages</a>. This innovative approach strengthened the project's resilience and promoted data-driven decision-making.
+- Returned full-time to AWS after interning on the Container Runtime team during my master's program, focusing on container runtime and tooling.
+- Contributed to open-source projects like <a href="https://github.com/awslabs/soci-snapshotter/" >SOCI </a>(lazy loading for containers) and <a href="https://runfinch.com/">Finch </a> (Docker alternative).
+- Built CI pipelines and infrastructure using AWS CDK, integrated AI agents to automate release processes.
+- Led contributions to Finch and finch-daemon, delivering Docker parity and saving $11M+ annually in licensing costs.
+- Integrated <a href="https://aws.amazon.com/blogs/machine-learning/introducing-soci-indexing-for-amazon-sagemaker-studio-faster-container-startup-times-for-ai-ml-workloads/"> SageMaker with SOCI </a>, achieving 65% faster startup times for large-model ML workloads.
+- Developed AI agents and internal platforms with AWS CDK, improving automation and observability.

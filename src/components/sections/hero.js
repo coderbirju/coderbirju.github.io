@@ -56,7 +56,7 @@ const Hero = () => {
 
     const timeout = setTimeout(() => setIsMounted(true), navDelay);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [prefersReducedMotion]);
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Arjun Raja.</h2>;
@@ -64,12 +64,13 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        I’m a software engineer specializing in building and designing exceptional full-stack
-        cross-platform apps. Currently, I’m pursuing my Master’s in Information Systems at{' '}
-        <a href="https://www.northeastern.edu/" target="_blank" rel="noreferrer">
-          Northeastern University
+        I’m a Software Development Engineer at{' '}
+        <a href="https://aws.amazon.com/" target="_blank" rel="noreferrer">
+          Amazon Web Services
         </a>
-        .
+        , specializing in container runtime and backend engineering. I focus on building scalable
+        distributed systems, open-source container technologies, and cloud-native solutions that
+        power modern applications.
       </p>
     </>
   );

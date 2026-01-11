@@ -124,21 +124,18 @@ const About = () => {
     }
 
     sr.reveal(revealContainer.current, srConfig());
-  }, []);
+  }, [prefersReducedMotion]);
 
   const skills = [
-    'Java (8+)',
-    'TypeScript',
     'Go',
-    'React',
-    'Node.js',
-    'Cloudformation',
     'Docker',
-    'YAML',
-    'MongoDB',
-    'SQL',
-    'Solidity',
-    'React Native',
+    'TypeScript',
+    'Cloudformation',
+    'Java (8+)',
+    'Github Actions',
+    'Shell Scripting',
+    'Python',
+    'Prompt Engineering',
   ];
 
   return (
@@ -152,22 +149,28 @@ const About = () => {
               My journey into the world of software engineering began in 2012 when I created my
               first Turbo C application. From that moment, I was captivated by the process of
               building something from the ground up, and the joy and satisfaction it brought me.
-              Ever since then, I've been on a relentless pursuit to recreate that feeling.
+              Ever since then, I&#39;ve been on a relentless pursuit to recreate that feeling.
             </p>
 
             <p>
-              Today, I've been fortunate to work with a variety of teams in different organizations,
-              ranging from startups to tech giants. My experiences include contributing to the
-              innovative cloud technologies at{' '}
-              <a href="https://aws.amazon.com/">Amazon Web Services </a>, diving into the fast-paced
-              world of fintech at <a href="https://cybrilla.com/">Cybrilla</a> , and exploring the
-              SaaS landscape at <a href="https://gowebknot.com/">WebKnot</a>. Currently, I'm in the
-              final semester of my Master's of Science in Information Systems program at{' '}
-              <a href="https://www.northeastern.edu/">Northeastern University - Boston</a>, where I
-              continue to hone my expertise in the field
+              Today, I&#39;m a Software Development Engineer at{' '}
+              <a href="https://aws.amazon.com/">Amazon Web Services</a>, focusing on container
+              runtime and backend engineering. My career has taken me through diverse experiences
+              working with startups and tech giants, including fintech innovation at{' '}
+              <a href="https://cybrilla.com/">Cybrilla</a>
+              and SaaS development at <a href="https://gowebknot.com/">WebKnot</a>. Currently, I
+              specialize in container technologies, contributing to open-source projects like SOCI
+              and Finch while building scalable backend systems with modern cloud infrastructure.
             </p>
 
-            <p>Here are some of the technologies I've been actively working with recently:</p>
+            <p>
+              I&#39;m passionate about containerization, distributed systems, and backend
+              engineering, and I&#39;m always interested in exploring new opportunities to
+              contribute to innovative projects in these spaces. When I&#39;m not coding, you can
+              find me exploring the latest in cloud technologies and open-source development.
+            </p>
+
+            <p>Here are some of the technologies I&#39;ve been actively working with recently:</p>
           </div>
 
           <ul className="skills-list">
