@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://coderbirju.github.io/sitemap.xml
+Sitemap: https://coderbirju.github.io/sitemap-index.xml
 Host: https://coderbirju.github.io
