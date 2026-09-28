@@ -77,6 +77,7 @@ const TagTemplate = ({ pageContext, data, location }) => {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
+                      timeZone: 'UTC',
                     })}
                   </time>
                   <span>&nbsp;&mdash;&nbsp;</span>

@@ -171,7 +171,7 @@ const ArchivePage = ({ location, data }) => {
                     node.frontmatter;
                   return (
                     <tr key={i} ref={(el) => (revealProjects.current[i] = el)}>
-                      <td className="overline year">{`${new Date(date).getFullYear()}`}</td>
+                      <td className="overline year">{`${new Date(date).getUTCFullYear()}`}</td>
 
                       <td className="title">{title}</td>
 

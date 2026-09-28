@@ -162,7 +162,7 @@ const PensievePage = ({ location, data }) => {
             posts.map(({ node }, i) => {
               const { frontmatter } = node;
               const { title, description, slug, date, tags } = frontmatter;
-              const formattedDate = new Date(date).toLocaleDateString();
+              const formattedDate = new Date(date).toLocaleDateString('en-US', { timeZone: 'UTC' });
 
               return (
                 <StyledPost key={i}>
