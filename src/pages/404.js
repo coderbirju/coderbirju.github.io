@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
-import { Helmet } from 'react-helmet';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { TransitionGroup } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { navDelay } from '@utils';
-import { Layout } from '@components';
+import { Layout, Seo, Transition } from '@components';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledMainContainer = styled.main`
@@ -31,12 +30,10 @@ const NotFoundPage = ({ location }) => {
   const [isMounted, setIsMounted] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
 
+  // Always start unmounted so the server and first client render match (avoids a hydration
+  // mismatch, since reduced-motion preference is only known on the client)
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    const timeout = setTimeout(() => setIsMounted(true), navDelay);
+    const timeout = setTimeout(() => setIsMounted(true), prefersReducedMotion ? 0 : navDelay);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -50,19 +47,13 @@ const NotFoundPage = ({ location }) => {
 
   return (
     <Layout location={location}>
-      <Helmet title="Page Not Found" />
-
-      {prefersReducedMotion ? (
-        <>{content}</>
-      ) : (
-        <TransitionGroup component={null}>
-          {isMounted && (
-            <CSSTransition timeout={500} classNames="fadeup">
-              {content}
-            </CSSTransition>
-          )}
-        </TransitionGroup>
-      )}
+      <TransitionGroup component={null}>
+        {isMounted && (
+          <Transition timeout={prefersReducedMotion ? 0 : 500} classNames="fadeup">
+            {content}
+          </Transition>
+        )}
+      </TransitionGroup>
     </Layout>
   );
 };
@@ -72,3 +63,5 @@ NotFoundPage.propTypes = {
 };
 
 export default NotFoundPage;
+
+export const Head = ({ location }) => <Seo title="Page Not Found" pathname={location.pathname} />;

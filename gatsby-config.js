@@ -6,11 +6,11 @@ module.exports = {
     description:
       'Arjun is a software engineer who specializes in building and occasionally exceptional full-stack cross-platform apps.',
     siteUrl: 'https://coderbirju.github.io', // No trailing slash allowed!
-    image: '/aog.png', // Path to your image you placed in the 'static' folder
+    image: '/og.png', // Path to your image you placed in the 'static' folder
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
@@ -75,7 +75,6 @@ module.exports = {
               maxWidth: 700,
               linkImagesToOriginal: true,
               quality: 90,
-              tracedSVG: { color: config.colors.green },
             },
           },
           {

@@ -1,7 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Layout, Hero, About, Jobs, Featured, Projects, OpenSource, Contact } from '@components';
+import {
+  Layout,
+  Seo,
+  Hero,
+  About,
+  Jobs,
+  Featured,
+  Projects,
+  OpenSource,
+  Contact,
+} from '@components';
 
 const StyledMainContainer = styled.main`
   counter-reset: section;
@@ -26,3 +36,5 @@ IndexPage.propTypes = {
 };
 
 export default IndexPage;
+
+export const Head = ({ location }) => <Seo pathname={location.pathname} />;

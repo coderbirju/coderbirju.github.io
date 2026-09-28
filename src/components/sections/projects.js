@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
+import { Transition } from '@components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { Icon } from '@components/icons';
@@ -172,7 +173,7 @@ const Projects = () => {
           fileAbsolutePath: { regex: "/projects/" }
           frontmatter: { showInProjects: { ne: false } }
         }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { frontmatter: { date: DESC } }
       ) {
         edges {
           node {
@@ -210,7 +211,7 @@ const Projects = () => {
   const firstSix = projects.slice(0, GRID_LIMIT);
   const projectsToShow = firstSix; // showMore ? projects :
 
-  const projectInner = node => {
+  const projectInner = (node) => {
     const { frontmatter, html } = node;
     const { github, external, title, tech } = frontmatter;
 
@@ -283,7 +284,7 @@ const Projects = () => {
           <TransitionGroup component={null}>
             {projectsToShow &&
               projectsToShow.map(({ node }, i) => (
-                <CSSTransition
+                <Transition
                   key={i}
                   classNames="fadeup"
                   timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
@@ -291,14 +292,14 @@ const Projects = () => {
                 >
                   <StyledProject
                     key={i}
-                    ref={el => (revealProjects.current[i] = el)}
+                    ref={(el) => (revealProjects.current[i] = el)}
                     style={{
                       transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
                     }}
                   >
                     {projectInner(node)}
                   </StyledProject>
-                </CSSTransition>
+                </Transition>
               ))}
           </TransitionGroup>
         )}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
+import { Transition } from '@components';
 import { srConfig } from '@config';
 import { KEY_CODES } from '@utils';
 import sr from '@utils/sr';
@@ -169,7 +169,7 @@ const Jobs = () => {
     query {
       jobs: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/jobs/" } }
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { frontmatter: { date: DESC } }
       ) {
         edges {
           node {
@@ -223,7 +223,7 @@ const Jobs = () => {
   useEffect(() => focusTab(), [tabFocus]);
 
   // Focus on tabs when using up & down arrow keys
-  const onKeyDown = e => {
+  const onKeyDown = (e) => {
     switch (e.key) {
       case KEY_CODES.ARROW_UP: {
         e.preventDefault();
@@ -248,7 +248,7 @@ const Jobs = () => {
       <h2 className="numbered-heading">Work Experience</h2>
 
       <div className="inner">
-        <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
+        <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={(e) => onKeyDown(e)}>
           {jobsData &&
             jobsData.map(({ node }, i) => {
               const { companyShort } = node.frontmatter;
@@ -257,7 +257,7 @@ const Jobs = () => {
                   key={i}
                   isActive={activeTabId === i}
                   onClick={() => setActiveTabId(i)}
-                  ref={el => (tabs.current[i] = el)}
+                  ref={(el) => (tabs.current[i] = el)}
                   id={`tab-${i}`}
                   role="tab"
                   tabIndex={activeTabId === i ? '0' : '-1'}
@@ -278,7 +278,7 @@ const Jobs = () => {
               const { title, url, company, range } = frontmatter;
 
               return (
-                <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
+                <Transition key={i} in={activeTabId === i} timeout={250} classNames="fade">
                   <StyledTabPanel
                     id={`panel-${i}`}
                     role="tabpanel"
@@ -301,7 +301,7 @@ const Jobs = () => {
 
                     <div dangerouslySetInnerHTML={{ __html: html }} />
                   </StyledTabPanel>
-                </CSSTransition>
+                </Transition>
               );
             })}
         </StyledTabPanels>
