@@ -26,16 +26,16 @@ module.exports = {
       url: '/#jobs',
     },
     {
-      name: 'Open Source',
-      url: '/#opensource',
+      name: 'Blog',
+      url: '/#blog',
     },
     {
       name: 'Projects',
       url: '/#projects',
     },
     {
-      name: 'Blog',
-      url: '/#blog',
+      name: 'Open Source',
+      url: '/#opensource',
     },
     {
       name: 'Contact',

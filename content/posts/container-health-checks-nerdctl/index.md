@@ -4,6 +4,7 @@ description: How Docker-compatible health checks work in nerdctl, and why we bui
 date: 2026-09-28
 draft: false
 slug: /blog/container-health-checks-nerdctl
+cover: ./healthcheck-state-machine.jpg
 tags:
   - Containers
   - nerdctl

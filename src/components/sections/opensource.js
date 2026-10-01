@@ -1,141 +1,151 @@
 import React, { useEffect, useRef } from 'react';
-import { Icon } from '@components/icons';
 import styled from 'styled-components';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { usePrefersReducedMotion } from '@hooks';
 
+const contributions = [
+  {
+    title: 'Add healthcheck orchestration logic',
+    description:
+      'Added comprehensive health check support to nerdctl, including CLI flags, systemd integration, and Docker-compatible functionality for container lifecycle management.',
+    tech: ['Go', 'systemd'],
+    url: 'https://github.com/containerd/nerdctl/pull/4427',
+  },
+  {
+    title: 'Add SOCI to nerdctl image convert',
+    description: 'Added support for converting images to SOCI with nerdctl image convert.',
+    tech: ['Go'],
+    url: 'https://github.com/containerd/nerdctl/pull/4300',
+  },
+  {
+    title: 'Add support for SOCI V2 index generation',
+    description: 'Added SOCI V2 index generation to the aws-index-builder CloudFormation stack.',
+    tech: ['Python', 'CloudFormation'],
+    url: 'https://github.com/awslabs/cfn-ecr-aws-soci-index-builder/pull/72',
+  },
+  {
+    title: 'OPA middleware support (Experimental)',
+    description:
+      'Added experimental API allowlisting to finch-daemon using an OPA policy evaluation middleware.',
+    tech: ['Go'],
+    url: 'https://github.com/runfinch/finch-daemon/pull/156',
+  },
+  {
+    title: 'Add release automation',
+    description: 'Added release automation for finch-daemon.',
+    tech: ['GitHub Actions', 'CI/CD', 'Shell'],
+    url: 'https://github.com/runfinch/finch-daemon/pull/28',
+  },
+  {
+    title: 'Return empty network settings for non-started containers',
+    description: 'Fixed a network inspect incompatibility with Docker.',
+    tech: ['Go'],
+    url: 'https://github.com/containerd/nerdctl/pull/4015',
+  },
+];
+
+// Splits https://github.com/<owner>/<repo>/pull/<number> into the repo label, repo URL, and PR number
+const parsePullUrl = (url) => {
+  const [, owner, repo, , number] = new URL(url).pathname.split('/');
+  return { repo: `${owner}/${repo}`, repoUrl: `https://github.com/${owner}/${repo}`, number };
+};
+
 const StyledOpenSourceSection = styled.section`
   max-width: 900px;
 
-  .opensource-grid {
+  .intro {
+    margin-bottom: 50px;
+  }
+
+  .timeline {
     ${({ theme }) => theme.mixins.resetList};
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 15px;
     position: relative;
-    margin-top: 50px;
+    padding-left: 30px;
+
+    /* The vertical line the dots sit on */
+    &:before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      bottom: 8px;
+      left: 5px;
+      width: 2px;
+      background-color: var(--lightest-navy);
+    }
   }
 `;
 
 const StyledContribution = styled.li`
   position: relative;
-  cursor: default;
-  transition: var(--transition);
+  padding-bottom: 35px;
 
-  @media (prefers-reduced-motion: no-preference) {
-    &:hover,
-    &:focus-within {
-      .contribution-inner {
-        transform: translateY(-7px);
-      }
-    }
+  &:last-of-type {
+    padding-bottom: 0;
   }
 
-  a {
-    position: relative;
-    z-index: 1;
-  }
-
-  .contribution-inner {
-    ${({ theme }) => theme.mixins.boxShadow};
-    ${({ theme }) => theme.mixins.flexBetween};
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    height: 100%;
-    padding: 2rem 1.75rem;
-    border-radius: var(--border-radius);
-    background-color: var(--light-navy);
+  &:before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: -30px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--green);
+    border-radius: 50%;
+    background-color: var(--navy);
     transition: var(--transition);
   }
 
-  .contribution-top {
-    ${({ theme }) => theme.mixins.flexBetween};
-    margin-bottom: 35px;
-
-    .folder {
-      color: var(--green);
-      svg {
-        width: 40px;
-        height: 40px;
-      }
-    }
-
-    .contribution-links {
-      display: flex;
-      align-items: center;
-      margin-right: -10px;
-      color: var(--light-slate);
-
-      a {
-        ${({ theme }) => theme.mixins.flexCenter};
-        padding: 5px 7px;
-
-        &.external {
-          svg {
-            width: 22px;
-            height: 22px;
-            margin-top: -4px;
-          }
-        }
-
-        svg {
-          width: 20px;
-          height: 20px;
-        }
-      }
-    }
+  &:hover:before,
+  &:focus-within:before {
+    background-color: var(--green);
   }
 
-  .contribution-title {
-    margin: 0 0 10px;
-    color: var(--lightest-slate);
-    font-size: var(--fz-xxl);
-
-    a {
-      position: static;
-
-      &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        z-index: 0;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-      }
-    }
-  }
-
-  .contribution-description {
-    color: var(--light-slate);
-    font-size: 17px;
+  .pr-ref {
+    margin: 0 0 5px;
+    font-family: var(--font-mono);
+    font-size: var(--fz-xs);
 
     a {
       ${({ theme }) => theme.mixins.inlineLink};
     }
+
+    .number {
+      color: var(--slate);
+    }
   }
 
-  .contribution-tech-list {
-    display: flex;
-    align-items: flex-end;
-    flex-grow: 1;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 20px 0 0 0;
-    list-style: none;
+  .pr-title {
+    margin: 0 0 5px;
+    font-size: var(--fz-xl);
+    line-height: 1.3;
 
-    li {
-      font-family: var(--font-mono);
-      font-size: var(--fz-xxs);
-      line-height: 1.75;
+    a {
+      color: var(--lightest-slate);
+      transition: var(--transition);
 
-      &:not(:last-of-type) {
-        margin-right: 15px;
+      &:hover,
+      &:focus {
+        color: var(--green);
       }
     }
+  }
+
+  .pr-desc {
+    margin: 0;
+    color: var(--slate);
+  }
+
+  .pr-tech {
+    ${({ theme }) => theme.mixins.resetList};
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 15px;
+    margin-top: 10px;
+    color: var(--light-slate);
+    font-family: var(--font-mono);
+    font-size: var(--fz-xxs);
   }
 `;
 
@@ -153,121 +163,47 @@ const OpenSource = () => {
     revealContributions.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, [prefersReducedMotion]);
 
-  const contributions = [
-    {
-      title: 'add healthcheck orchestration logic 4427',
-      description:
-        'Added comprehensive health check support to nerdctl, including CLI flags, systemd integration, and Docker-compatible functionality for container lifecycle management.',
-      tech: ['Go', 'systemd'],
-      external: 'https://github.com/containerd/nerdctl/pull/4427',
-      github: 'https://github.com/containerd/nerdctl',
-    },
-    {
-      title: 'add soci to nerdctl image convert 4300',
-      description: 'This PR adds functionality to support nerdctl image convert using soci.',
-      tech: ['Go'],
-      external: 'https://github.com/containerd/nerdctl/pull/4300',
-      github: 'https://github.com/containerd/nerdctl',
-    },
-    {
-      title: 'Add support for SOCI V2 index generation',
-      description: 'This PR added soci V2 index generation in the aws-index-builder cfn stack',
-      tech: ['python', 'cloudformation'],
-      external: 'https://github.com/awslabs/cfn-ecr-aws-soci-index-builder/pull/72',
-      github: 'https://github.com/awslabs/cfn-ecr-aws-soci-index-builder',
-    },
-    {
-      title: 'feat: Opa middleware support (Experimental) 156',
-      description:
-        'This PR adds API allowlisting functionality(Experimental) to finch-daemon APIs using opa policy evaluation middleware',
-      tech: ['Go'],
-      external: 'https://github.com/runfinch/finch-daemon/pull/156',
-      github: 'https://github.com/runfinch/finch-daemon',
-    },
-    {
-      title: 'ci: Add release automation #28',
-      description: 'add release automation for finch-daemon',
-      tech: ['Github Actions', 'CI/CD', 'Shell'],
-      external: 'https://github.com/runfinch/finch-daemon/pull/28',
-      github: 'https://github.com/runfinch/finch-daemon',
-    },
-    {
-      title: 'fix: Return empty network settings for non started containers',
-      description: 'fixes a network inspect incompatability with docker',
-      tech: ['Go'],
-      external: 'https://github.com/containerd/nerdctl/pull/4015',
-      github: 'https://github.com/containerd/nerdctl',
-    },
-  ];
-
   return (
     <StyledOpenSourceSection id="opensource" ref={revealContainer}>
       <h2 className="numbered-heading">Open Source Contributions</h2>
 
-      <p>
+      <p className="intro">
         I actively contribute to the container ecosystem through open-source projects, focusing on
         improving container runtimes, tooling, and developer experience.
       </p>
 
-      <ul className="opensource-grid">
-        {contributions.map(({ title, description, tech, external, github }, i) => (
-          <StyledContribution key={i} ref={(el) => (revealContributions.current[i] = el)}>
-            <div className="contribution-inner">
-              <header>
-                <div className="contribution-top">
-                  <div className="folder">
-                    <Icon name="GitHub" />
-                  </div>
-                  <div className="contribution-links">
-                    {github && (
-                      <a
-                        href={github}
-                        aria-label="Repository Link"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <Icon name="GitHub" />
-                      </a>
-                    )}
-                    {external && (
-                      <a
-                        href={external}
-                        aria-label="Pull Request Link"
-                        className="external"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <Icon name="External" />
-                      </a>
-                    )}
-                  </div>
-                </div>
+      <ol className="timeline">
+        {contributions.map(({ title, description, tech, url }, i) => {
+          const { repo, repoUrl, number } = parsePullUrl(url);
 
-                <h3 className="contribution-title">
-                  <a href={external} target="_blank" rel="noreferrer">
-                    {title}
-                  </a>
-                </h3>
+          return (
+            <StyledContribution key={url} ref={(el) => (revealContributions.current[i] = el)}>
+              <p className="pr-ref">
+                <a href={repoUrl} target="_blank" rel="noreferrer">
+                  {repo}
+                </a>{' '}
+                <span className="number">#{number}</span>
+              </p>
 
-                <div
-                  className="contribution-description"
-                  dangerouslySetInnerHTML={{ __html: description }}
-                />
-              </header>
+              <h3 className="pr-title">
+                <a href={url} target="_blank" rel="noreferrer">
+                  {title}
+                </a>
+              </h3>
 
-              <footer>
-                {tech && (
-                  <ul className="contribution-tech-list">
-                    {tech.map((tech, i) => (
-                      <li key={i}>{tech}</li>
-                    ))}
-                  </ul>
-                )}
-              </footer>
-            </div>
-          </StyledContribution>
-        ))}
-      </ul>
+              <p className="pr-desc">{description}</p>
+
+              {tech && (
+                <ul className="pr-tech">
+                  {tech.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              )}
+            </StyledContribution>
+          );
+        })}
+      </ol>
     </StyledOpenSourceSection>
   );
 };

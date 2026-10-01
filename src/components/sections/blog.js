@@ -1,26 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import kebabCase from 'lodash/kebabCase';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
-import { IconBookmark } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledBlogSection = styled.section`
-  max-width: 1000px;
+  max-width: 900px;
 
-  .posts-grid {
+  .posts-list {
     ${({ theme }) => theme.mixins.resetList};
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 15px;
-    position: relative;
-    margin-top: 50px;
-
-    @media (max-width: 1080px) {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
+    margin-top: 20px;
   }
 
   .all-posts {
@@ -32,105 +24,96 @@ const StyledBlogSection = styled.section`
 `;
 
 const StyledPost = styled.li`
+  display: flex;
+  align-items: center;
+  gap: 40px;
   position: relative;
-  cursor: default;
-  transition: var(--transition);
+  padding: 30px 0;
+  border-bottom: 1px solid var(--lightest-navy);
 
-  @media (prefers-reduced-motion: no-preference) {
-    &:hover,
-    &:focus-within {
-      .post-inner {
-        transform: translateY(-7px);
-      }
+  @media (max-width: 480px) {
+    gap: 20px;
+    padding: 25px 0;
+  }
+
+  &:hover,
+  &:focus-within {
+    .post-title a {
+      color: var(--green);
     }
   }
 
-  a {
-    position: relative;
-    z-index: 1;
+  .post-content {
+    flex: 1;
+    min-width: 0;
   }
 
-  .post-inner {
-    ${({ theme }) => theme.mixins.boxShadow};
-    ${({ theme }) => theme.mixins.flexBetween};
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    height: 100%;
-    padding: 2rem 1.75rem;
-    border-radius: var(--border-radius);
-    background-color: var(--light-navy);
-    transition: var(--transition);
-  }
-
-  .post-icon {
-    margin-bottom: 30px;
-    color: var(--green);
-
-    svg {
-      width: 40px;
-      height: 40px;
-    }
-  }
-
-  .post-title {
+  .post-meta {
     margin: 0 0 10px;
-    color: var(--lightest-slate);
-    font-size: var(--fz-xxl);
-
-    a {
-      position: static;
-
-      /* Stretch the title link over the whole card so any click opens the post */
-      &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        z-index: 0;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-      }
-    }
-  }
-
-  .post-desc {
-    color: var(--light-slate);
-    font-size: 17px;
-  }
-
-  footer {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  .post-date {
     color: var(--light-slate);
     font-family: var(--font-mono);
     font-size: var(--fz-xxs);
     text-transform: uppercase;
   }
 
+  .post-title {
+    margin: 0 0 10px;
+    color: var(--lightest-slate);
+    font-size: clamp(var(--fz-lg), 3vw, var(--fz-xxl));
+    line-height: 1.3;
+
+    a {
+      position: static;
+      transition: var(--transition);
+
+      /* Stretch the title link over the whole row so any click opens the post */
+      &:before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+    }
+  }
+
+  .post-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+    color: var(--slate);
+    font-size: var(--fz-lg);
+
+    @media (max-width: 480px) {
+      font-size: var(--fz-md);
+    }
+  }
+
   .post-tags {
+    ${({ theme }) => theme.mixins.resetList};
     display: flex;
     flex-wrap: wrap;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    gap: 5px 15px;
+    margin-top: 15px;
 
-    li {
+    a {
+      position: relative;
+      z-index: 1;
       color: var(--green);
       font-family: var(--font-mono);
       font-size: var(--fz-xxs);
-      line-height: 1.75;
+    }
+  }
 
-      &:not(:last-of-type) {
-        margin-right: 15px;
-      }
+  .post-cover {
+    flex-shrink: 0;
+    width: 160px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+
+    @media (max-width: 600px) {
+      width: 90px;
     }
   }
 `;
@@ -145,12 +128,23 @@ const Blog = () => {
       ) {
         edges {
           node {
+            timeToRead
             frontmatter {
               title
               description
               slug
               date
               tags
+              cover {
+                childImageSharp {
+                  gatsbyImageData(
+                    width: 320
+                    aspectRatio: 1.5
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                  )
+                }
+              }
             }
           }
         }
@@ -182,9 +176,11 @@ const Blog = () => {
         Latest Writing
       </h2>
 
-      <ul className="posts-grid">
+      <ul className="posts-list">
         {posts.map(({ node }, i) => {
-          const { title, description, slug, date, tags } = node.frontmatter;
+          const { timeToRead, frontmatter } = node;
+          const { title, description, slug, date, tags, cover } = frontmatter;
+          const image = getImage(cover);
           const formattedDate = new Date(date).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'short',
@@ -194,30 +190,30 @@ const Blog = () => {
 
           return (
             <StyledPost key={slug} ref={(el) => (revealPosts.current[i] = el)}>
-              <div className="post-inner">
-                <header>
-                  <div className="post-icon">
-                    <IconBookmark />
-                  </div>
-                  <h3 className="post-title">
-                    <Link to={slug}>{title}</Link>
-                  </h3>
-                  <p className="post-desc">{description}</p>
-                </header>
-
-                <footer>
-                  <time className="post-date">{formattedDate}</time>
-                  {tags && tags.length > 0 && (
-                    <ul className="post-tags">
-                      {tags.map((tag) => (
-                        <li key={tag}>
-                          <Link to={`/blog/tags/${kebabCase(tag)}/`}>#{tag}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </footer>
+              <div className="post-content">
+                <p className="post-meta">
+                  <time>{formattedDate}</time> &middot; {timeToRead} min read
+                </p>
+                <h3 className="post-title">
+                  <Link to={slug}>{title}</Link>
+                </h3>
+                <p className="post-desc">{description}</p>
+                {tags && tags.length > 0 && (
+                  <ul className="post-tags">
+                    {tags.map((tag) => (
+                      <li key={tag}>
+                        <Link to={`/blog/tags/${kebabCase(tag)}/`}>#{tag}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
+
+              {image && (
+                <div className="post-cover">
+                  <GatsbyImage image={image} alt={`Cover image for ${title}`} />
+                </div>
+              )}
             </StyledPost>
           );
         })}
