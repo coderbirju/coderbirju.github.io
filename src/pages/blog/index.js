@@ -10,20 +10,19 @@ const StyledMainContainer = styled.main`
   & > header {
     margin-bottom: 100px;
     text-align: center;
+  }
 
-    a {
-      &:hover,
-      &:focus {
-        cursor:
-          url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>⚡</text></svg>")
-            20 0,
-          auto;
-      }
-    }
+  .empty {
+    color: var(--slate);
+    font-family: var(--font-mono);
+    font-size: var(--fz-md);
+    text-align: center;
   }
 
   footer {
     ${({ theme }) => theme.mixins.flexBetween};
+    align-items: flex-end;
+    gap: 15px;
     width: 100%;
     margin-top: 20px;
   }
@@ -115,6 +114,7 @@ const StyledPost = styled.li`
   }
 
   .post__date {
+    flex-shrink: 0;
     color: var(--light-slate);
     font-family: var(--font-mono);
     font-size: var(--fz-xxs);
@@ -124,6 +124,7 @@ const StyledPost = styled.li`
   ul.post__tags {
     display: flex;
     align-items: flex-end;
+    justify-content: flex-end;
     flex-wrap: wrap;
     padding: 0;
     margin: 0;
@@ -142,20 +143,18 @@ const StyledPost = styled.li`
   }
 `;
 
-const PensievePage = ({ location, data }) => {
+const BlogPage = ({ location, data }) => {
   const posts = data.allMarkdownRemark.edges;
 
   return (
     <Layout location={location}>
       <StyledMainContainer>
         <header>
-          <h1 className="big-heading">Pensieve</h1>
-          <p className="subtitle">
-            <a href="https://www.wizardingworld.com/writing-by-jk-rowling/pensieve">
-              a collection of memories
-            </a>
-          </p>
+          <h1 className="big-heading">Blog</h1>
+          <p className="subtitle">Notes on what I&apos;m building and learning</p>
         </header>
+
+        {posts.length === 0 && <p className="empty">No posts yet. Check back soon.</p>}
 
         <StyledGrid>
           {posts.length > 0 &&
@@ -182,7 +181,7 @@ const PensievePage = ({ location, data }) => {
                       <ul className="post__tags">
                         {tags.map((tag, i) => (
                           <li key={i}>
-                            <Link to={`/pensieve/tags/${kebabCase(tag)}/`} className="inline-link">
+                            <Link to={`/blog/tags/${kebabCase(tag)}/`} className="inline-link">
                               #{tag}
                             </Link>
                           </li>
@@ -199,12 +198,12 @@ const PensievePage = ({ location, data }) => {
   );
 };
 
-PensievePage.propTypes = {
+BlogPage.propTypes = {
   location: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
 };
 
-export default PensievePage;
+export default BlogPage;
 
 export const pageQuery = graphql`
   {
@@ -229,4 +228,4 @@ export const pageQuery = graphql`
   }
 `;
 
-export const Head = ({ location }) => <Seo title="Pensieve" pathname={location.pathname} />;
+export const Head = ({ location }) => <Seo title="Blog" pathname={location.pathname} />;

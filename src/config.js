@@ -11,10 +11,6 @@ module.exports = {
       url: 'https://www.instagram.com/birjumohanarjun',
     },
     {
-      name: 'Twitter',
-      url: 'https://twitter.com/BirjuArjun',
-    },
-    {
       name: 'Linkedin',
       url: 'https://www.linkedin.com/in/arjun-yogidas',
     },
@@ -36,6 +32,10 @@ module.exports = {
     {
       name: 'Projects',
       url: '/#projects',
+    },
+    {
+      name: 'Blog',
+      url: '/blog',
     },
     {
       name: 'Contact',
