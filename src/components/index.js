@@ -8,6 +8,7 @@ export { default as Transition } from './transition';
 export { default as Social } from './social';
 export { default as Email } from './email';
 export { default as Footer } from './footer';
+export { default as PostList } from './postList';
 export { default as Hero } from './sections/hero';
 export { default as About } from './sections/about';
 export { default as Jobs } from './sections/jobs';
