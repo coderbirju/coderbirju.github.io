@@ -3,7 +3,7 @@ import { TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { Transition } from '@components';
 import { navDelay, loaderDelay } from '@utils';
-import { usePrefersReducedMotion } from '@hooks';
+import { useIntro, usePrefersReducedMotion } from '@hooks';
 // import { email } from '@config';
 
 const StyledHeroSection = styled.section`
@@ -47,6 +47,7 @@ const StyledHeroSection = styled.section`
 `;
 
 const Hero = () => {
+  const playIntro = useIntro();
   const [isMounted, setIsMounted] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -80,7 +81,7 @@ const Hero = () => {
 
   return (
     <StyledHeroSection>
-      {prefersReducedMotion ? (
+      {prefersReducedMotion || !playIntro ? (
         <>
           {items.map((item, i) => (
             <div key={i}>{item}</div>

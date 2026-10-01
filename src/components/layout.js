@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import { Loader, Nav, Social, Email, Footer } from '@components';
 import { GlobalStyle, theme } from '@styles';
+import { IntroContext } from '@hooks';
 
 const StyledContent = styled.div`
   display: flex;
@@ -10,9 +11,19 @@ const StyledContent = styled.div`
   min-height: 100vh;
 `;
 
+// Module state survives client-side navigation (Layout remounts per page), so the intro plays once
+// per visit rather than every time the user comes back to the homepage.
+let introPlayed = false;
+
 const Layout = ({ children, location }) => {
   const isHome = location.pathname === '/';
-  const [isLoading, setIsLoading] = useState(isHome);
+  const [playIntro] = useState(() => isHome && !introPlayed);
+  const [isLoading, setIsLoading] = useState(playIntro);
+
+  const finishLoading = () => {
+    introPlayed = true;
+    setIsLoading(false);
+  };
 
   // Sets target="_blank" rel="noopener noreferrer" on external links
   const handleExternalLinks = () => {
@@ -56,20 +67,22 @@ const Layout = ({ children, location }) => {
             Skip to Content
           </a>
 
-          {isLoading && isHome ? (
-            <Loader finishLoading={() => setIsLoading(false)} />
-          ) : (
-            <StyledContent>
-              <Nav isHome={isHome} />
-              <Social isHome={isHome} />
-              <Email isHome={isHome} />
+          <IntroContext.Provider value={playIntro}>
+            {isLoading ? (
+              <Loader finishLoading={finishLoading} />
+            ) : (
+              <StyledContent>
+                <Nav isHome={isHome} />
+                <Social />
+                <Email />
 
-              <div id="content">
-                {children}
-                <Footer />
-              </div>
-            </StyledContent>
-          )}
+                <div id="content">
+                  {children}
+                  <Footer />
+                </div>
+              </StyledContent>
+            )}
+          </IntroContext.Provider>
         </ThemeProvider>
       </div>
     </>

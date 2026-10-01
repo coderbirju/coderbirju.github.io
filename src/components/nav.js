@@ -5,7 +5,7 @@ import { TransitionGroup } from 'react-transition-group';
 import styled, { css } from 'styled-components';
 import { navLinks } from '@config';
 import { loaderDelay } from '@utils';
-import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
+import { useIntro, useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu, Transition } from '@components';
 import { IconLogo } from '@components/icons';
 
@@ -128,7 +128,8 @@ const StyledLinks = styled.div`
 `;
 
 const Nav = ({ isHome }) => {
-  const [isMounted, setIsMounted] = useState(!isHome);
+  const playIntro = useIntro();
+  const [isMounted, setIsMounted] = useState(!playIntro);
   const scrollDirection = useScrollDirection({ initialDirection: 'down' });
   const [scrolledToTop, setScrolledToTop] = useState(true);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -154,9 +155,9 @@ const Nav = ({ isHome }) => {
     };
   }, [prefersReducedMotion]);
 
-  const timeout = isHome ? loaderDelay : 0;
-  const fadeClass = isHome ? 'fade' : '';
-  const fadeDownClass = isHome ? 'fadedown' : '';
+  const timeout = playIntro ? loaderDelay : 0;
+  const fadeClass = playIntro ? 'fade' : '';
+  const fadeDownClass = playIntro ? 'fadedown' : '';
 
   const Logo = (
     <div className="logo" tabIndex="-1">
@@ -221,7 +222,7 @@ const Nav = ({ isHome }) => {
                     navLinks &&
                     navLinks.map(({ url, name }, i) => (
                       <Transition key={i} classNames={fadeDownClass} timeout={timeout}>
-                        <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
+                        <li key={i} style={{ transitionDelay: `${playIntro ? i * 100 : 0}ms` }}>
                           <Link to={url}>{name}</Link>
                         </li>
                       </Transition>
@@ -232,7 +233,7 @@ const Nav = ({ isHome }) => {
               <TransitionGroup component={null}>
                 {isMounted && (
                   <Transition classNames={fadeDownClass} timeout={timeout}>
-                    <div style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
+                    <div style={{ transitionDelay: `${playIntro ? navLinks.length * 100 : 0}ms` }}>
                       {ResumeLink}
                     </div>
                   </Transition>

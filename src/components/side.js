@@ -4,7 +4,7 @@ import { TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { Transition } from '@components';
 import { loaderDelay } from '@utils';
-import { usePrefersReducedMotion } from '@hooks';
+import { useIntro, usePrefersReducedMotion } from '@hooks';
 
 const StyledSideElement = styled.div`
   width: 40px;
@@ -25,12 +25,13 @@ const StyledSideElement = styled.div`
   }
 `;
 
-const Side = ({ children, isHome, orientation }) => {
-  const [isMounted, setIsMounted] = useState(!isHome);
+const Side = ({ children, orientation }) => {
+  const playIntro = useIntro();
+  const [isMounted, setIsMounted] = useState(!playIntro);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (!isHome || prefersReducedMotion) {
+    if (!playIntro || prefersReducedMotion) {
       return;
     }
     const timeout = setTimeout(() => setIsMounted(true), loaderDelay);
@@ -44,7 +45,7 @@ const Side = ({ children, isHome, orientation }) => {
       ) : (
         <TransitionGroup component={null}>
           {isMounted && (
-            <Transition classNames={isHome ? 'fade' : ''} timeout={isHome ? loaderDelay : 0}>
+            <Transition classNames={playIntro ? 'fade' : ''} timeout={playIntro ? loaderDelay : 0}>
               {children}
             </Transition>
           )}
@@ -56,7 +57,6 @@ const Side = ({ children, isHome, orientation }) => {
 
 Side.propTypes = {
   children: PropTypes.node.isRequired,
-  isHome: PropTypes.bool,
   orientation: PropTypes.string,
 };
 
