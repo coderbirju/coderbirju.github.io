@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: 'Arjun Raja',
     description:
-      'Arjun is a software engineer who specializes in building and occasionally exceptional full-stack cross-platform apps.',
+      'Arjun is a backend engineer working on distributed systems at AWS Lambda who also builds tools and products with AI on the side.',
     siteUrl: 'https://coderbirju.github.io', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
   },

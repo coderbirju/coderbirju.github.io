@@ -61,18 +61,24 @@ const Hero = () => {
   }, [prefersReducedMotion]);
 
   const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Arjun Raja.</h2>;
-  const three = <h3 className="big-heading">I build things for the web.</h3>;
+  const two = <h2 className="big-heading">Arjun.</h2>;
+  const three = (
+    <h3 className="big-heading">
+      Backend engineer.
+      <br />
+      Builder at heart.
+    </h3>
+  );
   const four = (
     <>
       <p>
-        I’m a Software Development Engineer at{' '}
-        <a href="https://aws.amazon.com/" target="_blank" rel="noreferrer">
-          Amazon Web Services
+        I&apos;m happiest when I&apos;m building. By day, that means distributed systems at{' '}
+        <a href="https://aws.amazon.com/lambda/" target="_blank" rel="noreferrer">
+          AWS Lambda
         </a>
-        , specializing in container runtime and backend engineering. I focus on building scalable
-        distributed systems, open-source container technologies, and cloud-native solutions that
-        power modern applications.
+        , where I&apos;m learning what it takes to keep things fast and reliable at a scale that
+        still amazes me. By night, it&apos;s my own projects: tools I wish existed, built with a lot
+        of help from AI.
       </p>
     </>
   );

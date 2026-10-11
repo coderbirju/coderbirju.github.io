@@ -1,6 +1,7 @@
 ---
 date: '2'
 title: 'Menace'
+draft: true
 cover: './Menace.png'
 github: 'https://github.com/coderbirju/Menace'
 external: ''

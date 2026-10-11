@@ -128,14 +128,12 @@ const About = () => {
 
   const skills = [
     'Go',
-    'Docker',
+    'Distributed Systems',
+    'Containers (containerd, Docker)',
+    'AWS & CloudFormation',
     'TypeScript',
-    'Cloudformation',
-    'Java (8+)',
-    'Github Actions',
-    'Shell Scripting',
-    'Python',
-    'Prompt Engineering',
+    'GitHub Actions',
+    'AI Agents',
   ];
 
   return (
@@ -146,31 +144,29 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              My journey into the world of software engineering began in 2012 when I created my
-              first Turbo C application. From that moment, I was captivated by the process of
-              building something from the ground up, and the joy and satisfaction it brought me.
-              Ever since then, I&#39;ve been on a relentless pursuit to recreate that feeling.
+              For me, the best feeling in the world is spotting a real problem and building
+              something that solves it.
             </p>
 
             <p>
-              Today, I&#39;m a Software Development Engineer at{' '}
-              <a href="https://aws.amazon.com/">Amazon Web Services</a>, focusing on container
-              runtime and backend engineering. My career has taken me through diverse experiences
-              working with startups and tech giants, including fintech innovation at{' '}
-              <a href="https://cybrilla.com/">Cybrilla</a>
-              and SaaS development at <a href="https://gowebknot.com/">WebKnot</a>. Currently, I
-              specialize in container technologies, contributing to open-source projects like SOCI
-              and Finch while building scalable backend systems with modern cloud infrastructure.
+              At work, that&#39;s pulled me toward the systems underneath everything else. I spent a
+              couple of years on the container runtime team at{' '}
+              <a href="https://aws.amazon.com/">Amazon Web Services</a>, working in the open on
+              projects like Finch, SOCI, and nerdctl, and I recently joined{' '}
+              <a href="https://aws.amazon.com/lambda/">AWS Lambda</a>, where I&#39;m going deep on
+              distributed systems. Before AWS, I built fintech products at{' '}
+              <a href="https://cybrilla.com/">Cybrilla</a> and SaaS platforms at{' '}
+              <a href="https://gowebknot.com/">WebKnot</a>.
             </p>
 
             <p>
-              I&#39;m passionate about containerization, distributed systems, and backend
-              engineering, and I&#39;m always interested in exploring new opportunities to
-              contribute to innovative projects in these spaces. When I&#39;m not coding, you can
-              find me exploring the latest in cloud technologies and open-source development.
+              Outside work, I&#39;m always building something of my own, usually a fix for a problem
+              I keep running into. AI has made that faster and a lot more fun. The latest is{' '}
+              <a href="https://github.com/coderbirju/InterviewBudAI">InterviewBudAI</a>, an
+              interview-prep coach that grew out of my own practice.
             </p>
 
-            <p>Here are some of the technologies I&#39;ve been actively working with recently:</p>
+            <p>Here are some of the technologies I&#39;ve been working with recently:</p>
           </div>
 
           <ul className="skills-list">

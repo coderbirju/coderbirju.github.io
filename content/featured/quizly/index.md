@@ -1,6 +1,7 @@
 ---
 date: '1'
 title: 'Quizly - Quick Quizes'
+draft: true
 cover: './Dash2.png'
 github: 'https://github.com/coderbirju/Quizly'
 tech:

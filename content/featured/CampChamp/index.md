@@ -1,6 +1,7 @@
 ---
 date: '3'
 title: 'CampChamp - Find your campground'
+draft: true
 cover: './campChamp.png'
 external: 'https://powerful-mesa-36430.herokuapp.com'
 github: 'https://github.com/coderbirju/CampChamp'
