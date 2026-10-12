@@ -10,6 +10,7 @@ const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
   align-items: flex-start;
+  max-width: 900px;
   min-height: 100vh;
   padding: 0;
 

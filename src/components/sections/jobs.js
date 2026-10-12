@@ -8,7 +8,7 @@ import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledJobsSection = styled.section`
-  max-width: 700px;
+  max-width: 900px;
 
   .inner {
     display: flex;
@@ -156,6 +156,10 @@ const StyledTabPanel = styled.div`
     }
   }
 
+  .role + .role {
+    margin-top: 40px;
+  }
+
   .range {
     margin-bottom: 25px;
     color: var(--light-slate);
@@ -188,7 +192,17 @@ const Jobs = () => {
     }
   `);
 
-  const jobsData = data.jobs.edges;
+  // One tab per company; several roles at the same company (same companyShort) share a tab and
+  // are listed newest first, since the query is sorted by date.
+  const jobsData = data.jobs.edges.reduce((groups, { node }) => {
+    const group = groups.find((g) => g.companyShort === node.frontmatter.companyShort);
+    if (group) {
+      group.roles.push(node);
+    } else {
+      groups.push({ companyShort: node.frontmatter.companyShort, roles: [node] });
+    }
+    return groups;
+  }, []);
 
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
@@ -250,8 +264,7 @@ const Jobs = () => {
       <div className="inner">
         <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={(e) => onKeyDown(e)}>
           {jobsData &&
-            jobsData.map(({ node }, i) => {
-              const { companyShort } = node.frontmatter;
+            jobsData.map(({ companyShort }, i) => {
               return (
                 <StyledTabButton
                   key={i}
@@ -273,10 +286,7 @@ const Jobs = () => {
 
         <StyledTabPanels>
           {jobsData &&
-            jobsData.map(({ node }, i) => {
-              const { frontmatter, html } = node;
-              const { title, url, company, range } = frontmatter;
-
+            jobsData.map(({ roles }, i) => {
               return (
                 <Transition key={i} in={activeTabId === i} timeout={250} classNames="fade">
                   <StyledTabPanel
@@ -287,19 +297,27 @@ const Jobs = () => {
                     aria-hidden={activeTabId !== i}
                     hidden={activeTabId !== i}
                   >
-                    <h3>
-                      <span>{title}</span>
-                      <span className="company">
-                        &nbsp;@&nbsp;
-                        <a href={url} className="inline-link">
-                          {company}
-                        </a>
-                      </span>
-                    </h3>
+                    {roles.map(({ frontmatter, html }) => {
+                      const { title, url, company, range } = frontmatter;
 
-                    <p className="range">{range}</p>
+                      return (
+                        <div className="role" key={range}>
+                          <h3>
+                            <span>{title}</span>
+                            <span className="company">
+                              &nbsp;@&nbsp;
+                              <a href={url} className="inline-link">
+                                {company}
+                              </a>
+                            </span>
+                          </h3>
 
-                    <div dangerouslySetInnerHTML={{ __html: html }} />
+                          <p className="range">{range}</p>
+
+                          <div dangerouslySetInnerHTML={{ __html: html }} />
+                        </div>
+                      );
+                    })}
                   </StyledTabPanel>
                 </Transition>
               );

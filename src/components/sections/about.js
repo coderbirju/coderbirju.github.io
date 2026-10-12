@@ -149,11 +149,11 @@ const About = () => {
             </p>
 
             <p>
-              At work, that&#39;s pulled me toward the systems underneath everything else. I spent a
-              couple of years on the container runtime team at{' '}
-              <a href="https://aws.amazon.com/">Amazon Web Services</a>, working in the open on
-              projects like Finch, SOCI, and nerdctl, and I recently joined{' '}
-              <a href="https://aws.amazon.com/lambda/">AWS Lambda</a>, where I&#39;m going deep on
+              At work, that&#39;s pulled me toward the systems underneath everything else. At{' '}
+              <a href="https://aws.amazon.com/">Amazon Web Services</a>, I spent a couple of years
+              on the container runtime team, working in the open on projects like Finch, SOCI, and
+              nerdctl, and I recently moved over to the{' '}
+              <a href="https://aws.amazon.com/lambda/">Lambda</a> team, where I&#39;m going deep on
               distributed systems. Before AWS, I built fintech products at{' '}
               <a href="https://cybrilla.com/">Cybrilla</a> and SaaS platforms at{' '}
               <a href="https://gowebknot.com/">WebKnot</a>.

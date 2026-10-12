@@ -7,6 +7,10 @@ import { srConfig } from '@config';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 
+const StyledFeaturedSection = styled.section`
+  max-width: 900px;
+`;
+
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
 
@@ -345,7 +349,7 @@ const Featured = () => {
   }, []);
 
   return (
-    <section id="projects">
+    <StyledFeaturedSection id="projects">
       <h2 className="numbered-heading" ref={revealTitle}>
         Side Projects
       </h2>
@@ -409,7 +413,7 @@ const Featured = () => {
             );
           })}
       </StyledProjectsGrid>
-    </section>
+    </StyledFeaturedSection>
   );
 };
 
